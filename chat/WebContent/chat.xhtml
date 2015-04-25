@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+  <h:head></h:head>
+
+   <h:body>
+   <p:layout fullPage="true">
+        
+        <p:layoutUnit position="north" size="150" header="Enviados" resizable="true" closable="true"
+         collapsible="false">
+          <h:form id="form1">
+               <p:dataTable value="#{mb.listaChatde}" var="linha">
+                 <p:column headerText="De">
+                   <h:outputText value="#{linha.de}" />
+                 </p:column>
+               <p:column headerText="Mensagem">
+                   <h:outputText value="#{linha.mensagem}" />
+               </p:column>
+              
+                 <p:column headerText="Para">
+                   <h:outputText value="#{linha.login.login}" />
+               </p:column>
+               
+               </p:dataTable>                 
+
+           </h:form>
+              
+  
+        </p:layoutUnit>
+        
+        
+        
+        <p:layoutUnit position="west" size="250" header="formulario" resizable="true" closable="true"
+         collapsible="false">
+          <h:form id="form2">
+              <h:panelGrid columns="2">
+                  <h:outputText value="De :" />
+                  <p:inputText value="#{mb.login.login}" ></p:inputText>
+                  
+                  <h:outputText value="Para :" />
+                  <p:selectOneMenu value="#{mb.para}">
+                       <f:selectItems value="#{mb.listaLogin1}">
+                       </f:selectItems>
+                  </p:selectOneMenu>
+                   
+                     <h:outputText value="Mensagem :" />
+                  <p:inputTextarea rows="3" cols="30" value="#{mb.mensagem}" ></p:inputTextarea> 
+                   
+              </h:panelGrid>
+              
+              <p:commandButton
+                value="Gravar Mensagem"
+                action = "#{mb.gravaMensagem}"
+                update=":form1, :form2, :form3"
+                ajax="true"></p:commandButton>
+                
+                <p/>
+                <p:messages />
+                
+           </h:form>
+        </p:layoutUnit>
+        
+        <p:layoutUnit position="center" size="250" header="formulario" resizable="true" closable="true"
+         collapsible="false">
+            <h:form id="form3">
+               <p:dataTable value="#{mb.listaChat}" var="linha">
+                 <p:column headerText="De">
+                   <h:outputText value="#{linha.de}" />
+                 </p:column>
+               <p:column headerText="Mensagem">
+                   <h:outputText value="#{linha.mensagem}" />
+               </p:column>
+              
+                 <p:column headerText="Para">
+                   <h:outputText value="#{linha.login.login}" />
+               </p:column>
+               
+               </p:dataTable>                 
+
+           </h:form>
+        </p:layoutUnit>
+        
+        
+      
+    </p:layout>    
+   </h:body>
+   </html>
