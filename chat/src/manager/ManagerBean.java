@@ -21,7 +21,7 @@ public class ManagerBean {
 
 	private Login login;
 	private Chat chat;
-	private List<SelectItem> listaLogin1; // new (combo)
+	private List<SelectItem> listaLogin1; 
 
 	private List<Chat> listaChat;
 
