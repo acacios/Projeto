@@ -16,7 +16,7 @@ import entity.Login;
 
 @ManagedBean(name = "mb")
 @SessionScoped
-// request é na mesma págin
+// request é na mesma página
 public class ManagerBean {
 
 	private Login login;
