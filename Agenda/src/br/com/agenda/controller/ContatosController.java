@@ -36,6 +36,7 @@ public class ContatosController {
 
 	public DataModel getListaContatos() {
 		List<Contatos> lista = new ContatosDao().List();
+
 		ListaContatos = new ListDataModel(lista);
 
 		return ListaContatos;
@@ -47,12 +48,11 @@ public class ContatosController {
 
 	public void prepararAlterarContato() {
 		contatos = (Contatos) (ListaContatos.getRowData());
+		contatos = new Contatos();
 	}
 
 	public void adicionar() {
 		InterfaceContatos dao = new ContatosDao();
-		System.out.println(contatos);
-
 		dao.salvar(contatos);
 
 	}

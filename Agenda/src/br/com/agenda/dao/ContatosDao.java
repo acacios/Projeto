@@ -2,6 +2,7 @@ package br.com.agenda.dao;
 
 import java.util.List;
 
+import org.apache.catalina.ssi.SSICommand;
 import org.hibernate.Session;
 
 import br.com.agenda.modelo.Contatos;
@@ -18,11 +19,17 @@ public class ContatosDao implements InterfaceContatos {
 
 	@Override
 	public void salvar(Contatos contatos) {
-		Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
-		ss.beginTransaction();
-		ss.save(contatos);
-		ss.beginTransaction().commit();
-	}
+
+	
+			Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
+			ss.beginTransaction();
+
+			ss.save(contatos);
+			ss.beginTransaction().commit();
+		
+		} 
+
+		
 
 	@Override
 	public void remover(Contatos contatos) {

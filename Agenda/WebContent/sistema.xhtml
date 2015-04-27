@@ -30,6 +30,7 @@
 				<p:commandLink value="novo contato"
 					action="#{mb.prepararAdicionarContato}"
 					onclick="dlgContatos.show()" />
+
 			</h:form>
 		</p:layoutUnit>
 
@@ -53,30 +54,36 @@
 						<p:inputText id="celular" value="#{mb.contatos.celular}" />
 
 					</p:panelGrid>
-					<p:commandButton value="Salvar" id="salva" action="#{mb.adicionar}"
-						update="contatos" oncomplete="dlgContatos.hide()" />
+					<br />
+
+					<center>
+						<p:commandButton value="Salvar" id="salva"
+							action="#{mb.adicionar}" update="contatos"
+							oncomplete="dlgContatos.hide()" />
+
+					</center>
 				</p:dialog>
 
 
 				<p:dataTable id="contatos" value="#{mb.listaContatos}"
-					var="contatos">
+					var="contatos_datatable">
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="nome" />
 						</f:facet>
-						<h:outputText value="#{contatos.nome}" />
+						<h:outputText value="#{contatos_datatable.nome}" />
 					</p:column>
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="E-M" />
+							<h:outputText value="E-MAIL" />
 						</f:facet>
-						<h:outputText value="#{contatos.email}" />
+						<h:outputText value="#{contatos_datatable.email}" />
 					</p:column>
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Telefone" />
 						</f:facet>
-						<h:outputText value="#{contatos.telefone}" />
+						<h:outputText value="#{contatos_datatable.telefone}" />
 					</p:column>
 
 
@@ -85,7 +92,7 @@
 						<f:facet name="header">
 							<h:outputText value="Celular" />
 						</f:facet>
-						<h:outputText value="#{contatos.celular}" />
+						<h:outputText value="#{contatos_datatable.celular}" />
 					</p:column>
 
 					<p:column>
@@ -103,8 +110,7 @@
 							<h:outputText value="Alterar" />
 						</f:facet>
 						<p:commandLink value="Alterar" action="#{mb.alterar}"
-							onclick="confirmation.hide()"
-							update="contatos" />
+							onclick="dlgAlterarContatos.show()" update="contatos" />
 					</p:column>
 
 
