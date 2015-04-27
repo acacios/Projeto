@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<style type="text/css">
+
+.tabela {
+	border: 1px solid green;
+}
+
+.cabecalho {
+	text-align: center;
+	font: 11px Calibri, sans-serif;
+	font-weight: bold;
+	color: Snow;
+	background: #cfcfcf;
+}
+
+
+.primeiro {
+	text-align: center;
+	font: 11px times new roman, sans-serif;
+	background: #ededed;
+}
+
+
+.ultimo {
+	font: 11px Arial, sans-serif;
+	text-align: center;
+	background: #ffff;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Patrimônio</title>
+</head>
+<body background= "imagens/pat.jpg" >
+ <f:view locale="#{i18N.locale}">
+
+    <h:form>
+  
+   <h:commandLink action="#{i18N.Lang('pt_BR')}">  
+        <button><img src= "imagens/icone_bandeira_brasil.gif" /> 
+        </button>  
+    </h:commandLink>  
+    
+   <h:commandLink action="#{i18N.Lang('es')}">  
+        <button><img src= "imagens/icone_bandeira_spa.gif" /> 
+        </button>  
+    </h:commandLink> 
+    
+   <h:commandLink action="#{i18N.Lang('en')}" >
+        <button><img src= "imagens/icone_bandeira_usa.gif" /> 
+        </button>  
+    </h:commandLink> 
+       
+    </h:form>
+
+	<h:form prependId="f">
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputLabel for="produto" value="#{msg.produto}"></h:outputLabel>
+			<h:inputText id="produto" size="40"
+			
+				value="#{materialControler.material.produto}" required="true"
+				requiredMessage="#{msg.msg}">
+				<f:validateLength minimum="2"></f:validateLength>
+			</h:inputText>
+
+			<h:outputLabel for="valor" value="#{msg.valor}"></h:outputLabel>
+			<h:inputText id="valor" size="40"
+				value="#{materialControler.material.valor}" required="true"></h:inputText>
+	<h:outputLabel for="tp" value="#{msg.tipodoproduto}"></h:outputLabel>
+				<h:selectOneMenu label="Tipo do Produto"
+				value="#{materialControler.material.tipo_produto }">
+				<f:selectItem itemLabel="" itemValue="" />
+				<f:selectItem itemLabel="Madeira" itemValue="madeira" />
+				<f:selectItem itemLabel="Latex" itemValue="latex" />
+				<f:selectItem itemLabel="Aço" itemValue="aço" />
+				<f:selectItem itemLabel="Ferro" itemValue="ferro" />
+			</h:selectOneMenu>
+			<h:commandButton value="#{msg['botao.gravar']}" action="#{materialControler.salvar}"></h:commandButton>
+			<br />
+			<br />
+			<br />
+			<br />
+			<h:outputLabel for="valor" value="#{msg.camposobrigatorios}"></h:outputLabel>
+		</h:panelGrid>
+
+</h:form>
+
+	<!-- Tabela -->
+	<h:form>
+	
+		<h:dataTable var="mat" value="#{materialControler.materiais}"
+			width="80%" styleClass="tabela" headerClass="cabecalho"
+			rowClasses="ultimo,primeiro">
+			
+			<h:column>
+				<!-- cabecalho -->
+				<f:facet name="header">
+					<h:outputText value="#{msg.p}"></h:outputText>
+				</f:facet>
+				<!-- valor -->
+				<h:outputText value="#{mat.produto}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<!-- cabecalho -->
+				<f:facet name="header">
+					<h:outputText value="#{msg.v}"></h:outputText>
+				</f:facet>
+				<!-- valor -->
+				<h:outputText value="#{mat.valor}"></h:outputText>
+			</h:column>
+					
+			<h:column>
+				<!-- cabecalho -->
+				<f:facet name="header">
+					<h:outputText value="#{msg.tipodoproduto}"></h:outputText>
+				</f:facet>
+				<!-- valor -->
+				<h:outputText value="#{mat.tipo_produto}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<!-- cabecalho -->
+				<f:facet name="header">
+					<h:outputText value="#{msg.opcao}"></h:outputText>
+				</f:facet>
+				<!-- valor -->
+				<h:panelGroup>
+					<h:commandLink value="#{msg.editar}"
+						action="#{materialControler.mostraFormEditar}"></h:commandLink>
+            |
+            <h:commandLink value="#{msg.excluir}"
+						action="#{materialControler.excluir}"></h:commandLink>
+				</h:panelGroup>
+
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+
+
+  </f:view>
+
+</body>
+
+</html>

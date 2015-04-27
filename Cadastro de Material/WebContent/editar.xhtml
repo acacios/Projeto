@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<style type="text/css">
+.tabela {
+	border: 1px solid green;
+}
+
+.cabecalho {
+	text-align: center;
+	font: 11px Arial, sans-serif;
+	font-weight: bold;
+	color: Snow;
+	background: #cfcfcf;
+}
+
+.primeiro {
+	text-align: center;
+	font: 11px Arial, sans-serif;
+	background: #ededed;
+}
+
+.ultimo {
+	font: 11px Arial, sans-serif;
+	text-align: center;
+	background: #ffff;
+}
+</style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Editar</title>
+</head>
+<body>
+
+
+	<h:form prependId="f">
+		<h:messages />
+		<h:panelGrid columns="2">
+
+			<h:panelGroup>
+				<h:inputHidden value="#{materialControler.material.id}"></h:inputHidden>
+				<h:outputLabel for="produto" value="#{msg.p}"></h:outputLabel>
+
+				<h:inputText id="produto" size="34"
+					value="#{materialControler.material.produto}" required="true"
+					requiredMessage="#{msg.msg}">
+					<f:validateLength minimum="2"></f:validateLength>
+				</h:inputText>
+				<br />
+				<h:outputLabel for="valor" value="#{msg.v}"></h:outputLabel>
+				<h:inputText id="valor" size="34"
+					value="#{materialControler.material.valor}" required="true">
+					<f:validateLength minimum="2"></f:validateLength>
+
+				</h:inputText>
+			</h:panelGroup>
+
+
+			<br />
+
+
+
+
+
+
+
+
+			<h:commandButton value="#{msg['botao.gravar']}"
+				action="#{materialControler.gravaEdicao}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+
+
+
+</body>
+
+</html>
