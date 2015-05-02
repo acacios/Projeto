@@ -10,8 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * exemplo de relacionamento de um para muitos, onde um funcionario so pode
- * pertencer a um departamento e um departamento pode ter varios funcionarios
+ * exemplo de relacionamento de muitos para um, onde um cliente tem muitos pedidos mais um pedido so pertence a um cliente
  * 
  * @date 28/04
  * 
