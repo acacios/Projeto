@@ -22,9 +22,7 @@ public class Login {
 	@Column(length=100)
 	 private String  senha;
 	@OneToMany(mappedBy="login",fetch=FetchType.EAGER)
-	 private List<Chat> listachat;  
-
-	
+		 private List<Chat> listachat;  
 	
 	 public Login() {
     }

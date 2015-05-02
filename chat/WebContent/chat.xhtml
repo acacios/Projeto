@@ -6,87 +6,139 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-  <h:head></h:head>
+<h:head></h:head>
 
-   <h:body>
-   <p:layout fullPage="true">
-        
-        <p:layoutUnit position="north" size="150" header="Enviados" resizable="true" closable="true"
-         collapsible="false">
-          <h:form id="form1">
-               <p:dataTable value="#{mb.listaChatde}" var="linha">
-                 <p:column headerText="De">
-                   <h:outputText value="#{linha.de}" />
-                 </p:column>
-               <p:column headerText="Mensagem">
-                   <h:outputText value="#{linha.mensagem}" />
-               </p:column>
-              
-                 <p:column headerText="Para">
-                   <h:outputText value="#{linha.login.login}" />
-               </p:column>
-               
-               </p:dataTable>                 
+<h:body>
+	<p:layout fullPage="true">
 
-           </h:form>
-              
-  
-        </p:layoutUnit>
-        
-        
-        
-        <p:layoutUnit position="west" size="250" header="formulario" resizable="true" closable="true"
-         collapsible="false">
-          <h:form id="form2">
-              <h:panelGrid columns="2">
-                  <h:outputText value="De :" />
-                  <p:inputText value="#{mb.login.login}" ></p:inputText>
-                  
-                  <h:outputText value="Para :" />
-                  <p:selectOneMenu value="#{mb.para}">
-                       <f:selectItems value="#{mb.listaLogin1}">
-                       </f:selectItems>
-                  </p:selectOneMenu>
-                   
-                     <h:outputText value="Mensagem :" />
-                  <p:inputTextarea rows="3" cols="30" value="#{mb.mensagem}" ></p:inputTextarea> 
-                   
-              </h:panelGrid>
-              
-              <p:commandButton
-                value="Gravar Mensagem"
-                action = "#{mb.gravaMensagem}"
-                update=":form1, :form2, :form3"
-                ajax="true"></p:commandButton>
-                
-                <p/>
-                <p:messages />
-                
-           </h:form>
-        </p:layoutUnit>
-        
-        <p:layoutUnit position="center" size="250" header="formulario" resizable="true" closable="true"
-         collapsible="false">
-            <h:form id="form3">
-               <p:dataTable value="#{mb.listaChat}" var="linha">
-                 <p:column headerText="De">
-                   <h:outputText value="#{linha.de}" />
-                 </p:column>
-               <p:column headerText="Mensagem">
-                   <h:outputText value="#{linha.mensagem}" />
-               </p:column>
-              
-                 <p:column headerText="Para">
-                   <h:outputText value="#{linha.login.login}" />
-               </p:column>
-               
-               </p:dataTable>                 
+		<p:layoutUnit position="north" header="Enviado para Você"
+			resizable="true" closable="true" collapsible="false">
+			<h:form id="form1">
+				<p:dataTable value="#{mb.listaChatde}" var="linha">
+					<p:column headerText="De">
+						<h:outputText value="#{linha.de}" />
+					</p:column>
+					<p:column headerText="Mensagem">
+						<h:outputText value="#{linha.mensagem}" />
+					</p:column>
 
-           </h:form>
-        </p:layoutUnit>
-        
-        
-      
-    </p:layout>    
-   </h:body>
-   </html>
+					<p:column headerText="Para">
+						<h:outputText value="#{linha.login.login}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+			</h:form>
+
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="350" header="formulario"
+			resizable="true" closable="true" collapsible="true">
+			<h:form id="form2">
+				<h:panelGrid columns="2">
+					<h:outputText value="De :" />
+					<p:inputText value="#{mb.login.login}"></p:inputText>
+
+					<h:outputText value="Para :" />
+					<p:selectOneMenu value="#{mb.para}">
+						<f:selectItems value="#{mb.listaLogin1}">
+						</f:selectItems>
+					</p:selectOneMenu>
+
+					<h:outputText value="Mensagem :" />
+					<p:inputTextarea rows="3" cols="25" value="#{mb.mensagem}"></p:inputTextarea>
+
+				</h:panelGrid>
+
+				<p:commandButton value="Gravar Mensagem"
+					action="#{mb.gravaMensagem}" update=":form1, :form2, :form3"
+					ajax="true"></p:commandButton>
+
+				<p />
+				<p:messages />
+
+
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" size="20" header="formulario"
+			resizable="true" closable="true" collapsible="false">
+			<h:form id="form3">
+				<p:dataTable value="#{mb.listaChat}" var="linha" id="contatos">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="De" />
+						</f:facet>
+
+						<h:outputText value="#{linha.de}" />
+					</p:column>
+
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mensagem" />
+						</f:facet>
+
+						<h:outputText value="#{linha.mensagem}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Para" />
+						</f:facet>
+
+						<h:outputText value="#{linha.login.login}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+
+
+
+
+				<h:panelGrid columns="2">
+
+					<p:panel header="Exporta Dados">
+						<h:commandLink>
+							<p:graphicImage value="/imagem/excel.jpg" width="40px"
+								height="40px">
+							</p:graphicImage>
+							<p:dataExporter target="contatos" type="xls" fileName="arquivo"></p:dataExporter>
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/pdf.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="pdf" fileName="arquivo"></p:dataExporter>
+						</h:commandLink>
+
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/csv.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="csv" fileName="arquivo"></p:dataExporter>
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/xml.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="xml" fileName="arquivo"></p:dataExporter>
+						</h:commandLink>
+
+					</p:panel>
+				</h:panelGrid>
+
+
+
+
+			</h:form>
+		</p:layoutUnit>
+
+
+	</p:layout>
+</h:body>
+</html>

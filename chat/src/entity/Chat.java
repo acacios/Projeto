@@ -22,8 +22,7 @@ public class Chat {
 	private String de;
  	@Column
 	private Integer codigoDe;
-	
- 	
+	 	
  	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_login")
 	private Login login;
