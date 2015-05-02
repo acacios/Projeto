@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head></h:head>
+	
+	<h:body>
+		
+		<p:panel header="LOGIN NO SISTEMA">
+			<h:form id="form1">
+				<h:outputText value="LOGIN: " />
+				<p:inputText value="#{uBean.usuario.login}" />
+				<br /><br />
+				<h:outputText value="SENHA: " />
+				<p:inputText type="password" value="#{uBean.usuario.senha}" />
+				<br />
+				<p:commandButton value="LOGAR" ajax="false" 
+				update="@form" action="#{uBean.logar}" />
+				<p:messages />
+			</h:form>
+		</p:panel>
+		
+	</h:body>
+	
+	
+</html>
