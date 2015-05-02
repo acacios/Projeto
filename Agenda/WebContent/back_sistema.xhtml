@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<title>Sistema Agend</title>
+
+
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="90">
+
+			
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form prependId="false">
+				<p:dialog widgetVar="dlgContatos"  hresizable="false"
+					header="Agenda de Contatos" width="400">
+
+
+					<p:panelGrid columns="2">
+						<h:outputText value="nome" />
+						<p:inputText id="nome" value="#{mb.contatos.nome}" />
+
+						<h:outputText value="email" />
+						<p:inputText id="email" value="#{mb.contatos.email}" />
+
+						<h:outputText value="telefone" />
+						<p:inputText id="telefone" value="#{mb.contatos.telefone}" />
+
+						<h:outputText value="celular" />
+						<p:inputText id="celular" value="#{mb.contatos.celular}" />
+
+					</p:panelGrid>
+					<br />
+
+					<center>
+						<p:commandButton value="Salvar" id="salva"
+							action="#{mb.adicionar}" update="contatos"
+							oncomplete="dlgContatos.hide()" />
+
+					</center>
+				</p:dialog>
+
+
+		
+       
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+
+
+
+</html>

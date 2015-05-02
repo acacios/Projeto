@@ -34,9 +34,12 @@
 			</h:form>
 		</p:layoutUnit>
 
+
+
 		<p:layoutUnit position="center">
 			<h:form prependId="false">
-				<p:dialog widgetVar="dlgContatos" height="250" hresizable="false"
+
+				<p:dialog widgetVar="dlgContatos" hresizable="false"
 					header="Agenda de Contatos" width="400">
 
 
@@ -63,7 +66,6 @@
 
 					</center>
 				</p:dialog>
-
 
 				<p:dataTable id="contatos" value="#{mb.listaContatos}"
 					var="contatos_datatable">
@@ -109,14 +111,56 @@
 						<f:facet name="header">
 							<h:outputText value="Alterar" />
 						</f:facet>
-						<p:commandLink value="Alterar" action="#{mb.alterar}"
+
+						<p:commandLink value="Alterar"
+							action="#{mb.prepararAlterarContato}"
 							onclick="dlgAlterarContatos.show()" update="contatos" />
 					</p:column>
 
 
 
 				</p:dataTable>
+				<h:panelGrid columns="2">
+
+
+
+					<p:panel header="Exporta Dados">
+						<h:commandLink>
+							<p:graphicImage value="/imagem/excel.jpg" width="40px"
+								height="40px">
+							</p:graphicImage>
+							<p:dataExporter target="contatos" type="xls" fileName="linha"></p:dataExporter>
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/pdf.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="pdf" fileName="linha"></p:dataExporter>
+						</h:commandLink>
+
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/csv.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="csv" fileName="linha"></p:dataExporter>
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage value="/imagem/xml.jpg" width="40px"
+								height="40px"></p:graphicImage>
+							<p:dataExporter target="contatos" type="xml" fileName="linha"></p:dataExporter>
+						</h:commandLink>
+
+					</p:panel>
+				</h:panelGrid>
+
 			</h:form>
+
+
+
+
+
+
 		</p:layoutUnit>
 	</p:layout>
 </h:body>

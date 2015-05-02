@@ -20,16 +20,13 @@ public class ContatosDao implements InterfaceContatos {
 	@Override
 	public void salvar(Contatos contatos) {
 
-	
-			Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
-			ss.beginTransaction();
+		Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
+		ss.beginTransaction();
 
-			ss.save(contatos);
-			ss.beginTransaction().commit();
-		
-		} 
+		ss.save(contatos);
+		ss.beginTransaction().commit();
 
-		
+	}
 
 	@Override
 	public void remover(Contatos contatos) {
@@ -52,7 +49,9 @@ public class ContatosDao implements InterfaceContatos {
 	public java.util.List<Contatos> List() {
 		Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
 		ss.beginTransaction();
+		
 		List lista = ss.createQuery("From contatos").list();
+		
 		ss.beginTransaction().commit();
 		return lista;
 	}

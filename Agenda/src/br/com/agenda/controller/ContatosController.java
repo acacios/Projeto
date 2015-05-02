@@ -54,6 +54,7 @@ public class ContatosController {
 	public void adicionar() {
 		InterfaceContatos dao = new ContatosDao();
 		dao.salvar(contatos);
+		contatos = new Contatos();
 
 	}
 
